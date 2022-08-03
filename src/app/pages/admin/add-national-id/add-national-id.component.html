@@ -1,0 +1,44 @@
+
+<div class="container">
+
+  <div class="row">
+  <div class="col-12 content-center">
+    <div class="alert alert-primary">
+      valid=>{{addNationalIdForm.valid}}<br>
+      invalid=> {{addNationalIdForm.invalid}}<br>
+      value=> {{addNationalIdForm.value|json}} <br>
+      touched=>{{addNationalIdForm.touched}}<br>
+      errors=> {{addNationalIdForm.errors|json}}
+    </div>
+    <form [formGroup]="addNationalIdForm" (ngSubmit)="addNationalId()">
+      <div class="mb-3 mt-3">
+        <label for="NationalId" class="form-label">NationalId:</label>
+        <input type="text" class="form-control" id="NationalId" placeholder="Enter NationalId"  NationalId="NationalId" formControlName="NationalId" >
+      </div>
+<div >
+  {{NationalId?.errors|json}} <br>
+</div>
+
+<div *ngIf="NationalIdNumber()">number only</div>
+
+        <div class="mb-3 mt-3">
+          <label for="type" class="form-label">type:</label>
+          <input type="type" class="form-control" id="type" placeholder="Enter type"   name="type" formControlName="type">
+        </div>
+
+        <div >
+          {{type?.errors|json}}
+
+          <div *ngIf="handleD()">add doctor or nurse only</div>
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">add</button>
+      </form>
+
+
+
+    </div>
+</div>
+</div>

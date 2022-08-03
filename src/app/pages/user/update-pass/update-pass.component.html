@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+<div class="alert alert-primary">
+ <p>valid=>> {{update.valid}}</p>
+<p>invalid=>> {{update.invalid}}</p>
+<p>touched=>> {{update.touched}}</p>
+<p>submitted=>> {{update.submitted}}</p>
+<p>value=>> {{update.value}}</p>
+</div>
+</div>
+
+  <div class="row">
+  <div class="col-12 content-center">
+    <form #update="ngForm" (ngSubmit)="onUpdate(update)">
+
+        <div class="mb-3 mt-3">
+          <label for="otp" class="form-label">OTP:</label>
+          <input type="otp" class="form-control" id="otp" placeholder="Enter otp"  #otp="ngModel" name="otp"  required minlength="6" maxlength="6"  ngModel>
+          <div class="alert alert-danger" *ngIf="otp.invalid&&(otp.touched||update.submitted)">
+
+            <span *ngIf="otp.errors?.['required']" >*required</span>
+            <span *ngIf="otp.errors?.['minlength']" >*minlength</span>
+            <span *ngIf="otp.errors?.['maxlength']" >*maxlength</span>
+
+            </div>
+
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label" >Password:</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter password"  #password="ngModel" name="password"  required minlength="8"   ngModel >
+
+          <div class="alert alert-danger" *ngIf="otp.invalid&&(otp.touched||update.submitted)">
+            <span *ngIf="password.errors?.['required']" >*required</span>
+            <span *ngIf="password.errors?.['minlength']" >*minlength</span>
+            </div>
+        </div>
+
+
+        <button class="btn btn-primary">update</button>
+      </form>
+  </div>
+</div>
+</div>
+

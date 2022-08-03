@@ -1,0 +1,51 @@
+
+<div class="container">
+  <div class="row">
+  <div class="col-12 content-center">
+    <div class="alert alert-primary">
+      valid=>{{addAppointmentForm.valid}}<br>
+      invalid=> {{addAppointmentForm.invalid}}<br>
+      value=> {{addAppointmentForm.value|json}} <br>
+      touched=>{{addAppointmentForm.touched}}<br>
+      errors=> {{addAppointmentForm.errors|json}}
+    </div>
+    <form [formGroup]="addAppointmentForm" (ngSubmit)="addAppointment(addAppointmentForm)">
+      <div class="mb-3 mt-3">
+        <label for="name" class="form-label">name:</label>
+        <input day="text" class="form-control" id="name" placeholder="Enter name"  name="name" formControlName="name" >
+      </div>
+<div >
+  {{name?.errors|json}} <br>
+</div>
+
+
+        <div class="mb-3 mt-3">
+          <label for="day" class="form-label">day:</label>
+          <input day="day" class="form-control" id="day" placeholder="Enter day"   name="day" formControlName="day">
+        </div>
+
+        <div >
+          {{day?.errors|json}}
+           <div *ngIf="handleD()">add doctor or nurse only</div>
+        </div>
+
+
+
+        <div class="mb-3 mt-3">
+          <label for="DoctorId" class="form-label">DoctorId:</label>
+          <input day="DoctorId" class="form-control" id="DoctorId" placeholder="Enter DoctorId"   name="DoctorId" formControlName="DoctorId">
+        </div>
+
+        <div >
+          {{DoctorId?.errors|json}}
+        </div>
+
+
+        <button  class="btn btn-primary">add</button>
+      </form>
+
+
+
+    </div>
+</div>
+</div>

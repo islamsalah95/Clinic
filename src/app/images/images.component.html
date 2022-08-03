@@ -1,0 +1,38 @@
+
+<div class="container">
+
+  <div class="row">
+  <div class="col-12 content-center">
+    <form #register="ngForm" (ngSubmit)="onRegister(register)">
+      <!-- <p class="alert alert-danger" *ngIf="msg">{{msg}}</p> -->
+      <div class="mb-3 mt-3">
+        <label for="name" class="form-label">Name:</label>
+        <input type="name" class="form-control" id="name" placeholder="Enter name"   name="name" ngModel #name="ngModel" >
+      </div>
+
+      <div class="alert alert-danger my-2"
+      *ngIf="name.invalid && (name.touched||register.submitted)">
+          <span *ngIf="name.errors?.['required']">* required</span>
+          <span *ngIf="name.errors?.['minlength']">* min length</span>
+          <span *ngIf="name.errors?.['maxlength']">* max length</span>
+      </div>
+
+
+        <div class="mb-3 mt-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email"   name="email" ngModel #name="ngModel" >
+        </div>
+
+
+
+        <div class="mb-3">
+          <label for="password" class="form-label" >Password:</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter password"  name="password" ngModel #name="ngModel" >
+        </div>
+
+
+        <button class="btn btn-primary">register</button>
+      </form>
+  </div>
+</div>
+</div>

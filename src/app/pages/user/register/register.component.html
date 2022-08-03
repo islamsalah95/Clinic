@@ -1,0 +1,63 @@
+<p>register works!</p>
+<div class="container">
+
+  <div class="row">
+<div class="alert alert-primary">
+ <p>valid=>> {{register.valid}}</p>
+<p>invalid=>> {{register.invalid}}</p>
+<p>touched=>> {{register.touched}}</p>
+<p>submitted=>> {{register.submitted}}</p>
+<p>value=>> {{register.value}}</p>
+</div>
+</div>
+
+  <div class="row">
+  <div class="col-12 content-center">
+    <form #register="ngForm" (ngSubmit)="registerData(register)">
+      <div class="mb-3 mt-3">
+          <label for="name" class="form-label">name:</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter name" #name="ngModel" name="name" required minlength="10" maxlength="50"  ngModel >
+
+          <div class="alert alert-danger" *ngIf="name.invalid&&(name.touched||register.submitted)">
+
+            <span *ngIf="name.errors?.['required']" >*required</span>
+            <span *ngIf="name.errors?.['minlength']" >*minlength</span>
+            <span *ngIf="name.errors?.['maxlength']" >*maxlength</span>
+            </div>
+
+
+        </div>
+
+        <div class="mb-3 mt-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email"  #email="ngModel" name="email" required minlength="10" maxlength="50"  ngModel>
+          <div class="alert alert-danger" *ngIf="email.invalid&&(email.touched||register.submitted)">
+
+            <span *ngIf="email.errors?.['required']" >*required</span>
+            <span *ngIf="email.errors?.['minlength']" >*minlength</span>
+            <span *ngIf="email.errors?.['maxlength']" >*maxlength</span>
+            </div>
+
+            <!-- <div class="alert alert-danger" *ngIf="email.invalid&&email.touched">
+            invalid email
+            </div> -->
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label" >Password:</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter password" #password="ngModel" name="password" required minlength="10" maxlength="50" ngModel>
+<div class="alert alert-danger" *ngIf="password.invalid&&(password.touched||register.submitted)">
+invalid pass
+<span *ngIf="password.errors?.['required']" >*required</span>
+<span *ngIf="password.errors?.['minlength']" >*minlength</span>
+<span *ngIf="password.errors?.['maxlength']" >*maxlength</span>
+
+
+</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">register</button>
+      </form>
+  </div>
+</div>
+</div>
+

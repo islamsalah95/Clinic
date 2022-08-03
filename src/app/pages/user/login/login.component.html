@@ -1,0 +1,36 @@
+
+<div class="container">
+
+  <div class="row">
+  <div class="col-12 content-center">
+    <form [formGroup]="login" (ngSubmit)="onLogin(login)">
+
+        <div class="mb-3 mt-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email"   name="email" formControlName="email">
+        </div>
+
+        <!-- <div class="alert alert-danger my-2" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+          <li *ngIf="email?.errors?.['required']">required</li>
+          <li *ngIf="email?.errors?.['minlength']">min length 5 chars</li>
+          <li *ngIf="email?.errors?.['maxlength']">max length 20 chars</li>
+      </div> -->
+
+
+        <div class="mb-3">
+          <label for="password" class="form-label" >Password:</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter password"  name="password" formControlName="password" >
+        </div>
+
+        <!-- <div class="alert alert-danger my-2" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+          <li *ngIf="password?.errors?.['required']">required</li>
+      </div> -->
+
+        <button class="btn btn-primary">login</button>
+      </form>
+  </div>
+</div>
+</div>
+
+
+

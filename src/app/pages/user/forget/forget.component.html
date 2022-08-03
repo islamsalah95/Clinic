@@ -1,0 +1,37 @@
+<p>forget works!</p>
+<div class="container">
+
+  <div class="row">
+<div class="alert alert-primary">
+ <p>valid=>> {{forget.valid}}</p>
+<p>invalid=>> {{forget.invalid}}</p>
+<p>touched=>> {{forget.touched}}</p>
+<p>submitted=>> {{forget.submitted}}</p>
+<p>value=>> {{forget.value}}</p>
+</div>
+</div>
+
+  <div class="row">
+  <div class="col-12 content-center">
+    <form #forget="ngForm" (ngSubmit)="onForget(forget)">
+
+        <div class="mb-3 mt-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email"  #email="ngModel" name="email" email required minlength="10" maxlength="50"  ngModel>
+          <div class="alert alert-danger" *ngIf="email.invalid&&(email.touched||forget.submitted)">
+
+            <span *ngIf="email.errors?.['required']" >*required</span>
+            <span *ngIf="email.errors?.['minlength']" >*minlength</span>
+            <span *ngIf="email.errors?.['maxlength']" >*maxlength</span>
+            <span *ngIf="email.errors?.['email']" >*email</span>
+
+            </div>
+
+        </div>
+
+
+        <button class="btn btn-primary">forget</button>
+      </form>
+  </div>
+</div>
+</div>

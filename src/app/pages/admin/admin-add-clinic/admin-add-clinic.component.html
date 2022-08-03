@@ -1,0 +1,20 @@
+
+<div class="container">
+
+  <div class="row">
+  <div class="col-12 content-center">
+    <form [formGroup]="addClinicForm" (ngSubmit)="addClinic()">
+      <div class="mb-3 mt-3">
+          <label for="name" class="form-label">name:</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter name"  name="name" formControlName="name" >
+        </div>
+<div class="alert alert-danger">
+  {{name?.errors|json}}
+</div>
+
+
+        <button type="submit" class="btn btn-primary">add</button>
+      </form>
+  </div>
+</div>
+</div>
