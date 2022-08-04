@@ -1,3 +1,4 @@
+import { DataService } from 'src/app/services/data.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./get-all-orders.component.css']
 })
 export class GetAllOrdersComponent implements OnInit {
+  all:any[]=[]
+name:any
+  constructor(private _user:DataService) { }
 
-  constructor() { }
+    ngOnInit(): void {
 
-  ngOnInit(): void {
+      this._user.GetAllOrdersForAdmin().subscribe(all=>{
+        this.all=all.data
+      console.log(all)
+      console.log(this._user.userData)
+    })
   }
 
 }

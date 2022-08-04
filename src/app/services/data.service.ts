@@ -7,7 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-
+public otp = ""
+public isLoggedIn : boolean = false
+public userData:any = null
   constructor(private _http:HttpClient) { }
 
   register(data:User):Observable<any>{
@@ -18,12 +20,9 @@ export class DataService {
       return this._http.post(`http://localhost:3000/api/user/login`,data)
       }
 
-      logout():Observable<any>{
-        return this._http.get(`http://localhost:3000/api/user/logout`)
-        }
 
       appointment(data:any):Observable<any>{
-        return this._http.get(`http://localhost:3000/api/reservation/appointment`,data)
+        return this._http.post(`http://localhost:3000/api/reservation/appointment`,data)
         }
 
 
@@ -39,16 +38,45 @@ export class DataService {
  return this._http.get(`http://localhost:3000/api/user/getAllDoctors`)
 }
 
+getSinglePatient():Observable<any>{
+  return this._http.get(`http://localhost:3000/api/reservation/getSinglePatient`)
+ }
 
 
-//   getImages():Observable<any>{
-// return this._http.get("https://jsonplaceholder.typicode.com/photos?_limit=10")
-// }
+ addNationalIdAdmin(data:any):Observable<any>{
+  return this._http.post(`http://localhost:3000/api/stuffNationalId/addNationalId`,data)
+  }
 
-// getSingleImages(id:string):Observable<any>{
-//   return this._http.get(`https://jsonplaceholder.typicode.com/photos/${id}`)
-//   }
+  getMyAppointmentDR():Observable<any>{
+    return this._http.get(`http://localhost:3000/api/reservation/getMyAppointmentDR`)
+   }
 
-//ng g c show/getAllClinics
+   GetAllOrdersForAdmin():Observable<any>{
+    return this._http.get(`http://localhost:3000/api/user/getAllUsers`)
+   }
+
+   logout():Observable<any>{
+    return this._http.get(`http://localhost:3000/api/user/logout`)
+    }
+
+
+  getSinglePatientHistory(id:string):Observable<any>{
+   return this._http.get(`http://localhost:3000/api/patientHistory/getSinglePatientHistory/${id}`)
+ }
+
+    addPatientHistoryNurse(data:any):Observable<any>{
+      return this._http.post(`http://localhost:3000/api/patientHistory/addPatientHistory`,data)
+      }
+    getAllUsers():Observable<any>{
+      return this._http.get(`http://localhost:3000/api/user/getAllUsers`)
+      }
+      getAllClinics():Observable<any>{
+        return this._http.get(`http://localhost:3000/api/clinic/getAllClinics`)
+        }
+
+        me():Observable<any>{
+          return this._http.get(`http://localhost:3000/api/user/me`)
+          }
+
 
 }

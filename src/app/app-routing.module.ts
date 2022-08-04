@@ -1,3 +1,6 @@
+import { AllpatientComponent } from './allpatient/allpatient.component';
+import { RegisterStufComponent } from './register-stuf/register-stuf.component';
+import { AddPatientHistoryComponent } from './pages/nurse/add-patient-history/add-patient-history.component';
 import { LogoutComponent } from './pages/user/logout/logout.component';
 import { GetSinglePatientHistoryComponent } from './show/get-single-patient-history/get-single-patient-history.component';
 import { GetSinglePatientComponent } from './show/get-single-patient/get-single-patient.component';
@@ -24,7 +27,7 @@ import { AppointmentComponent } from './pages/user/appointment/appointment.compo
 
 const routes: Routes = [
   {
-    path:"home",component:HomeComponent
+    path:"",component:HomeComponent
 
   },
   {
@@ -90,17 +93,37 @@ const routes: Routes = [
 
   },
   {
+    path:"GetAllOrders",component:GetAllOrdersComponent
+
+  },
+  {
     path:"GetMyAppointmentDR",component:GetMyAppointmentDRComponent
 
   },
   {
-    path:"GetSinglePatient",component:GetSinglePatientComponent
+    path:"GetSinglePatientFORPatient",component:GetSinglePatientComponent
 
   },
   {
-    path:"GetSinglePatientHistory",component:GetSinglePatientHistoryComponent
+    path:"GetSinglePatientHistoryForDR/:id",component:GetSinglePatientHistoryComponent
 
   }
+  ,
+  {
+    path:"RegisterStufComponent",component:RegisterStufComponent
+
+  }
+  ,
+  {
+    path:"AddPatientHistory",component:AddPatientHistoryComponent
+
+  }
+  ,
+  {
+    path:"Allpatient",component:AllpatientComponent
+
+  }
+
 ];
 
 @NgModule({

@@ -13,15 +13,12 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler){
-    const token =localStorage.getItem("userToken")
-    if (token) {
-request=request.clone({
-  headers:request.headers.set("Authorization",token)
-})
+    const token = localStorage.getItem("userToken")
+    if(token){
+      request = request.clone({
+        headers: request.headers.set("Authorization", token)
+      })
     }
-
-
-
     return next.handle(request);
   }
 }

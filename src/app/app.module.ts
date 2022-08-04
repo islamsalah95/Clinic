@@ -30,7 +30,9 @@ import { GetMyAppointmentDRComponent } from './show/get-my-appointment-dr/get-my
 import { GetSinglePatientComponent } from './show/get-single-patient/get-single-patient.component';
 import { GetAllDoctorsComponent } from './show/get-all-doctors/get-all-doctors.component';
 import { GetAllOrdersComponent } from './show/get-all-orders/get-all-orders.component';
-import { LogoutComponent } from './pages/user/logout/logout.component'
+import { LogoutComponent } from './pages/user/logout/logout.component';
+import { RegisterStufComponent } from './register-stuf/register-stuf.component';
+import { AllpatientComponent } from './allpatient/allpatient.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +61,8 @@ import { LogoutComponent } from './pages/user/logout/logout.component'
     GetAllDoctorsComponent,
     GetAllOrdersComponent,
     LogoutComponent,
+    RegisterStufComponent,
+    AllpatientComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,9 +72,7 @@ import { LogoutComponent } from './pages/user/logout/logout.component'
     HttpClientModule
   ],
   providers: [
-    {
-      provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true
-    }
+    { provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
   ],
   bootstrap: [AppComponent]
 })

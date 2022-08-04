@@ -10,33 +10,29 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./appointment.component.css']
 })
 export class AppointmentComponent implements OnInit {
-
+  all:any[]=[]
   constructor(private _user:DataService, private _route:Router) { }
-
   addAppointmentForm=new FormGroup({
     name:new FormControl("",[
   Validators.required,
   Validators.minLength(5),
-
-
     ]),
     day:new FormControl("",[
       Validators.required,
       Validators.minLength(2),
       Validators.maxLength(2)
-
     ]),
     DoctorId:new FormControl("",[
       Validators.required
-
-
         ]),
   })
 
-
-
-  ngOnInit(): void {
-  }
+   ngOnInit(): void {
+    this._user.GetAllDoctors().subscribe(all=>{
+    this.all=all.data
+    console.log(all)
+  })
+}
 
   get name(){return this.addAppointmentForm.get("name")}
   get day(){return this.addAppointmentForm.get("day")}
@@ -65,6 +61,24 @@ export class AppointmentComponent implements OnInit {
 
             }
 
-            
-            
+
+
 }
+
+
+
+// export class GetAllDoctorsComponent implements OnInit {
+//   all:any[]=[]
+
+// constructor(private _data:DataService) { }
+
+//   ngOnInit(): void {
+
+//     this._data.GetAllDoctors().subscribe(all=>{
+//     this.all=all.data
+//     console.log(all)
+//   })
+// }
+
+
+// }

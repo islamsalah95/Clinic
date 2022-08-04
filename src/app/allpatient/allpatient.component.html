@@ -1,0 +1,23 @@
+<table class="table table-striped table-inverse table-responsive">
+  <thead class="thead-inverse">
+    <tr>
+      <th>name</th>
+      <th>age</th>
+      <th>type</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of all " >
+        <td scope="row">{{d.name}}</td>
+        <td>{{d.age}}</td>
+        <td>{{d.type}}</td>
+        <td><a class="btn btn-success"  [routerLink]="['/GetSinglePatientHistoryForDR',d._id]">Show History</a></td>
+      </tr>
+
+    </tbody>
+</table>
+
+
+<!-- GetSinglePatientHistoryForDR/{{d._id}} -->

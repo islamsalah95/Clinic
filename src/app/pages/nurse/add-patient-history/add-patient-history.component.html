@@ -1,1 +1,47 @@
-<p>add-patient-history works!</p>
+<div class="container">
+  <div class="row">
+<div class="alert alert-primary">
+ <p>valid=>> {{addPatientHistoryForm.valid}}</p>
+<p>invalid=>> {{addPatientHistoryForm.invalid}}</p>
+<p>touched=>> {{addPatientHistoryForm.touched}}</p>
+<p>submitted=>> {{addPatientHistoryForm.submitted}}</p>
+<p>value=>> {{addPatientHistoryForm.value}}</p>
+</div>
+</div>
+
+  <div class="row">
+  <div class="col-12 content-center">
+    <form #addPatientHistoryForm="ngForm" (ngSubmit)="addPatientHistory(addPatientHistoryForm)">
+
+        <div class="mb-3 mt-3">
+          <label for="medicineName" class="form-label">medicineName:</label>
+          <input type="medicineName" class="form-control" placeholder="Enter medicineName"  #medicineName="ngModel" id="medicineName" name="medicineName"  required minlength="6" maxlength="100"  ngModel>
+          <div class="alert alert-danger" *ngIf="medicineName.invalid&&(medicineName.touched||addPatientHistoryForm.submitted)">
+            <span *ngIf="medicineName.errors?.['required']" >*required</span>
+            <span *ngIf="medicineName.errors?.['minlength']" >*minlength</span>
+            <span *ngIf="medicineName.errors?.['maxlength']" >*maxlength</span>
+            </div>
+        </div>
+
+<h1>doctors</h1>
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"  #DoctorId="ngModel" id="DoctorId" name="DoctorId"  required    ngModel >
+          <option selected>Open this select menu</option>
+          <option *ngFor="let d of all" value={{d._id}}>{{d.name}} ${{d.VezeetaPrice}}</option>
+        </select>
+
+<h1>patients</h1>
+        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"  #patientId="ngModel" id="patientId" name="patientId"  required    ngModel >
+          <option selected>Open this select menu</option>
+          <option value={{a._id}} *ngFor="let a of allPAtient">{{a.name}}</option>
+        </select>
+
+
+
+
+        <button class="btn btn-primary">add</button>
+      </form>
+  </div>
+</div>
+</div>
+
+

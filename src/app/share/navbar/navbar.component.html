@@ -1,81 +1,157 @@
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+
+<header>
+  <div class="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 text-sm">
+          <div class="site-info">
+            <a href="#"><span class="mai-call text-primary"></span> +00 123 4455 6666</a>
+            <span class="divider">|</span>
+            <a href="#"><span class="mai-mail text-primary"></span> mail@example.com</a>
+          </div>
+        </div>
+        <div class="col-sm-4 text-right text-sm">
+          <div class="social-mini-button">
+            <a href="#"><span class="mai-logo-facebook-f"></span></a>
+            <a href="#"><span class="mai-logo-twitter"></span></a>
+            <a href="#"><span class="mai-logo-dribbble"></span></a>
+            <a href="#"><span class="mai-logo-instagram"></span></a>
+          </div>
+        </div>
+      </div> <!-- .row -->
+    </div> <!-- .container -->
+  </div> <!-- .topbar -->
+
+  <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/"><span class="text-primary">One</span>-Health</a>
+
+
+
+      <div class="collapse navbar-collapse" id="navbarSupport">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="btn btn"routerLink="/" >Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn"routerLink="/about" >About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="btn btn"routerLink="contact" >Contact</a>
+          </li>
+          <li class="nav-item">
+              <a class="btn btn-primary ml-lg-3" routerLink="/login"> Login</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="btn btn-primary ml-lg-3" routerLink="/RegisterStufComponent">Register</a>
+          </li>
+
+
+
+          <!-- user -->
+
+          <ul class="nav nav-tabs" *ngIf="_user.userData.type=='user'">
+
+          <li class="nav-item">
+            <a class="btn btn" routerLink="/appointment">appointment</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="btn btn" routerLink="/GetSinglePatientFORPatient">MY History</a>
+          </li>
+
+        </ul>
+
+
+
+
+          <!-- <li class="nav-item">
+            <a class="btn btn" routerLink="/RegisterStufComponent">RegisterStufComponent</a>
+          </li> -->
+
+
+         <ul class="nav nav-tabs" *ngIf="_user.userData.type=='doctor'">
+          <li class="nav-item dropdown">
+            <a class="btn btn dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dashboard</a>
+            <div class="dropdown-menu">
+             <!-- dr -->
+              <a class="dropdown-item" routerLink="/GetMyAppointmentDR">DR appointment Today</a>
+              <!-- <a class="dropdown-item" routerLink="/GetSinglePatientHistoryForDR">All Patient history</a> -->
+              <a class="dropdown-item" routerLink="/Allpatient">Allpatient</a>
+
+
+            </div>
+          </li>
+         </ul>
+
+
+
+         <ul class="nav nav-tabs" *ngIf="_user.userData.type=='nurse'">
+          <li class="nav-item dropdown">
+         <!-- nurse -->
+
+            <a class="btn btn dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dashboard</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" routerLink="/AddPatientHistory">Add Patient History</a>
+            </div>
+          </li>
+         </ul>
+
+
+
+
+
+
+
+         <ul class="nav nav-tabs" *ngIf="_user.userData.type=='admin'">
+          <li class="nav-item dropdown">
+            <a class="btn btn dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dashboard</a>
+            <div class="dropdown-menu">
+              <!-- admin -->
+              <a class="dropdown-item" routerLink="/adminAddClinic">adminAddClinic</a>
+              <a class="dropdown-item" routerLink="/addNationalId">addNationalId</a>
+            </div>
+          </li>
+         </ul>
+
+
+         <li class="nav-item" *ngIf="_user.isLoggedIn">
+          <form *ngIf="_user.isLoggedIn" (ngSubmit)="onLogout()">
+            <button class="btn btn-primary ml-lg-3" >logout</button>
+            </form>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/about">about</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/contact">contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/images">register</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/adminAddClinic">adminAddClinic</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/addNationalId">addNationalId</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/appointment">appointment</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login">login</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/forget">forget</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/logout">logout</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/updatePass">updatePass</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/GetAllClinics">GetAllClinics</a>
-        </li>
 
 
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/GetAllDoctors">GetAllDoctors</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/GetMyAppointmentDR">GetMyAppointmentDR</a>
-        </li>
-
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/GetSinglePatient">GetSinglePatient</a>
-        </li>
+            <button class="btn btn-primary ml-lg-3" *ngIf="_user.isLoggedIn">{{_user.userData.name}}</button>
+        </ul>
+      </div> <!-- .navbar-collapse -->
+    </div> <!-- .container -->
+  </nav>
+</header>
 
 
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/GetSinglePatientHistory">GetSinglePatientHistory</a>
-        </li>
+<!-- Button trigger modal -->
 
 
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        .
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
   </div>
-</nav>
+</div>

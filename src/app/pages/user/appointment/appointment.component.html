@@ -19,23 +19,25 @@
 </div>
 
 
-        <div class="mb-3 mt-3">
-          <label for="day" class="form-label">day:</label>
-          <input day="day" class="form-control" id="day" placeholder="Enter day"   name="day" formControlName="day">
-        </div>
-
+<h1>Name</h1>
+     <select class="form-select" aria-label="Default select example" id="day"   name="day" formControlName="day" >
+          <option  selected>select Doctor</option>
+          <option value="sa">sa</option>
+          <option value="su">su</option>
+          <option value="mo">mo</option>
+          <option value="we">we</option>
+          <option value="th">th</option>
+        </select>
         <div >
           {{day?.errors|json}}
            <div *ngIf="handleD()">add doctor or nurse only</div>
         </div>
 
-
-
-        <div class="mb-3 mt-3">
-          <label for="DoctorId" class="form-label">DoctorId:</label>
-          <input day="DoctorId" class="form-control" id="DoctorId" placeholder="Enter DoctorId"   name="DoctorId" formControlName="DoctorId">
-        </div>
-
+        <h1>Doctors</h1>
+        <select class="form-select" aria-label="Default select example" id="DoctorId" name="DoctorId" formControlName="DoctorId" >
+          <option  selected>select Doctor</option>
+          <option *ngFor="let d of all " value={{d._id}}>{{d.name}} ${{d.VezeetaPrice}}</option>
+        </select>
         <div >
           {{DoctorId?.errors|json}}
         </div>
@@ -44,8 +46,9 @@
         <button  class="btn btn-primary">add</button>
       </form>
 
-
-
     </div>
 </div>
 </div>
+
+
+

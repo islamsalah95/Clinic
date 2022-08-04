@@ -10,7 +10,7 @@
       touched=>{{addNationalIdForm.touched}}<br>
       errors=> {{addNationalIdForm.errors|json}}
     </div>
-    <form [formGroup]="addNationalIdForm" (ngSubmit)="addNationalId()">
+    <form [formGroup]="addNationalIdForm" (ngSubmit)="addNationalId(addNationalIdForm)">
       <div class="mb-3 mt-3">
         <label for="NationalId" class="form-label">NationalId:</label>
         <input type="text" class="form-control" id="NationalId" placeholder="Enter NationalId"  NationalId="NationalId" formControlName="NationalId" >
@@ -20,17 +20,36 @@
 </div>
 
 <div *ngIf="NationalIdNumber()">number only</div>
-
-        <div class="mb-3 mt-3">
-          <label for="type" class="form-label">type:</label>
-          <input type="type" class="form-control" id="type" placeholder="Enter type"   name="type" formControlName="type">
-        </div>
-
+<h1>Open this select menu</h1>
+        <select class="form-select" aria-label="Default select example" id="type" name="type" formControlName="type">
+          <option value="doctor">doctor</option>
+          <option value="nurse">nurse</option>
+        </select>
         <div >
           {{type?.errors|json}}
 
+          <h1>Open this select department</h1>
+          <select class="form-select" aria-label="Default select example"  id="department" name="department" formControlName="department">
+            <option  value="doctor">Open this select menu</option>
+            <option *ngFor="let item of all" value={{item._id}}>{{item.name}}</option>
+          </select>
+
+
           <div *ngIf="handleD()">add doctor or nurse only</div>
 
+        </div>
+
+
+        <div class="mb-3 mt-3">
+          <label for="description" class="form-label">description:</label>
+          <input type="text" class="form-control" id="description" placeholder="Enter description"  name="description" formControlName="description" >
+        </div>
+
+
+
+        <div class="mb-3 mt-3">
+          <label for="VezeetaPrice" class="form-label">VezeetaPrice:</label>
+          <input type="number"  class="form-control" id="VezeetaPrice" placeholder="Enter VezeetaPrice"  name="VezeetaPrice" formControlName="VezeetaPrice" >
         </div>
 
 

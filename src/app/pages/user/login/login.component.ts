@@ -11,10 +11,10 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   login=new FormGroup({
-  password:new FormControl("123456789",[
+  password:new FormControl("",[
     Validators.required,
   ]),
-  email:new FormControl("testusertestuser@gmail.com",[
+  email:new FormControl("",[
     Validators.required,
     Validators.minLength(5),
     Validators.minLength(10),
@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
       ])
 })
 
-
+msg=""
+  emailUniqueError = ""
 constructor(private _user:DataService, private _route:Router) { }
 ngOnInit(): void {}
 
@@ -31,24 +32,22 @@ get email(){return this.login.get("email")}
 get password(){return this.login.get("password")}
 
 onLogin(data:any){
- 
+
   if(data.valid){
     this._user.login(data.value).subscribe(
       (res)=>{console.log(res)
 localStorage.setItem("userToken",`Bearer ${res.data.token}`)
+this._user.userData=res.data.user
       },
-      (err)=>{console.log(err.error.data)},
+      (err)=>{this.msg="Invalid login data"},
       ()=>{
-        console.log("done")
+        this._user.isLoggedIn=true
         this._route.navigateByUrl("appointment")
       }
     )
   }
 
   }
-
-
-
 
 
   }
